@@ -9,101 +9,122 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+/* COLORS */
+:root{
+  --blue-deep:#0B1F3A;
+  --sunset-orange:#FF7A18;
+  --sunset-yellow:#FFD166;
+  --cream:#FAF8F4;
+  --white:#fff;
+}
+
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:#F5F1E8;
-  color:#0F2A44;
-}
-
-h1,h2{
-  font-family:'Playfair Display',serif;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
+  background:var(--cream);
+  color:var(--blue-deep);
 }
 
 /* HERO */
 .hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:80px 20px;
+  position:relative;
+  color:white;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(rgba(11,31,58,0.6), rgba(11,31,58,0.9)),
+  url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover;
+  z-index:-2;
+}
+
+.hero::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg, rgba(255,122,24,0.3), rgba(46,134,171,0.3));
+  z-index:-1;
 }
 
 .hero h1{
-  font-size:48px;
-  margin-bottom:10px;
+  font-family:'Playfair Display',serif;
+  font-size:55px;
 }
 
 .hero p{
   max-width:600px;
   margin:auto;
-  color:#555;
 }
 
 .btn{
-  display:inline-block;
   padding:12px 25px;
-  margin:15px 10px;
-  text-decoration:none;
+  margin:10px;
   border-radius:5px;
+  text-decoration:none;
   font-size:14px;
 }
 
 .btn-primary{
-  background:#F59E0B;
-  color:#fff;
+  background:linear-gradient(135deg,#FF7A18,#FFD166);
+  color:#0B1F3A;
 }
 
 .btn-secondary{
-  border:1px solid #0F2A44;
-  color:#0F2A44;
+  border:1px solid white;
+  color:white;
 }
 
-/* SECTION */
-.section{
-  text-align:center;
+/* DESTINATIONS */
+.destinations{
   padding:60px 20px;
+  text-align:center;
 }
 
-.cards{
-  display:flex;
-  flex-wrap:wrap;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
-  justify-content:center;
 }
 
 .card{
-  background:#fff;
+  height:250px;
+  border-radius:12px;
+  color:white;
+  display:flex;
+  align-items:end;
   padding:20px;
-  width:300px;
-  border-radius:10px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.05);
+  font-weight:600;
 }
+
+.bali{background:url('https://images.unsplash.com/photo-1604999333679-b86d54738315') center/cover;}
+.dubai{background:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c') center/cover;}
+.europe{background:url('https://images.unsplash.com/photo-1491553895911-0055eca6402d') center/cover;}
+.kashmir{background:url('https://images.unsplash.com/photo-1599661046289-e31897846e41') center/cover;}
 
 /* CONTACT */
 .contact{
-  background:#fff;
-  padding:40px;
-  border-radius:10px;
+  padding:60px 20px;
+  text-align:center;
+}
+
+form{
+  max-width:500px;
+  margin:auto;
 }
 
 input,textarea{
   width:100%;
-  padding:10px;
+  padding:12px;
   margin:10px 0;
-  border:1px solid #ddd;
-  border-radius:5px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  font-size:14px;
-  color:#777;
 }
 
 /* WHATSAPP */
@@ -112,12 +133,12 @@ footer{
   bottom:20px;
   right:20px;
   background:#25D366;
-  color:#fff;
+  color:white;
   padding:12px 18px;
   border-radius:50px;
   text-decoration:none;
-  font-size:14px;
 }
+
 </style>
 </head>
 
@@ -125,63 +146,48 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Travel the world without overpaying</h1>
-  <p>Premium travel experiences, thoughtfully planned to give you the best value — from local escapes to international adventures.</p>
+  <div>
+    <h1>Travel the World Without Overpaying</h1>
+    <p>Premium travel experiences, thoughtfully planned to give you the best value — from local escapes to international adventures.</p>
 
-  <a href="#contact" class="btn btn-primary">Plan Your Trip</a>
-  <a href="https://wa.me/919876543210" class="btn btn-secondary">Chat on WhatsApp</a>
+    <a href="#contact" class="btn btn-primary">Plan Your Trip</a>
+    <a href="https://wa.me/919876543210" class="btn btn-secondary">Chat on WhatsApp</a>
+
+    <p style="margin-top:10px;color:#FFD166;">Limited slots available this season ✈️</p>
+  </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section">
-  <h2>Our Services</h2>
+<!-- DESTINATIONS -->
+<section class="destinations">
+  <h2>Popular Destinations</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Domestic Trips</h3>
-      <p>Explore India with curated experiences.</p>
-    </div>
-
-    <div class="card">
-      <h3>International Tours</h3>
-      <p>Travel globally with ease and comfort.</p>
-    </div>
-
-    <div class="card">
-      <h3>Honeymoon Packages</h3>
-      <p>Special moments crafted perfectly.</p>
-    </div>
+  <div class="grid">
+    <div class="card bali">Bali</div>
+    <div class="card dubai">Dubai</div>
+    <div class="card europe">Europe</div>
+    <div class="card kashmir">Kashmir</div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="section" id="contact">
+<section class="contact" id="contact">
   <h2>Plan Your Trip</h2>
 
-  <div class="container contact">
+  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="tel" name="phone" placeholder="Phone Number">
+    <textarea name="message" placeholder="Tell us about your trip"></textarea>
 
-    <form action="https://formspree.io/f/YOUR_ID" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Phone Number">
-      <textarea name="message" placeholder="Tell us about your trip"></textarea>
+    <button class="btn btn-primary">Send Enquiry</button>
+  </form>
 
-      <button class="btn btn-primary" type="submit">Send Enquiry</button>
-    </form>
-
-    <p>Email: info@deshvideshtours.com</p>
-    <p>Phone: +91 98765 43210</p>
-
-  </div>
+  <p>Email: info@deshvideshtours.com</p>
+  <p>Phone: +91 98765 43210</p>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  © 2026 Desh Videsh Tours & Travels
-</footer>
-
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/919876543210" class="whatsapp">WhatsApp</a>
+<!-- WHATSAPP -->
+<a href="https://wa.me/919876543210" class="whatsapp">Chat</a>
 
 </body>
 </html>
