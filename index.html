@@ -1,1542 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Desh Videsh Travels — Journey Beyond Horizons</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Desh Videsh | Travel the world without overpaying</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8D08A;
-    --gold-dark: #8A6A1E;
-    --ink: #1A1714;
-    --cream: #FAF7F2;
-    --sand: #EDE8DF;
-    --mist: #F5F2EC;
-    --text-muted: #7A7065;
-    --border: rgba(201,168,76,0.25);
-    --ff-display: 'Cormorant Garamond', Georgia, serif;
-    --ff-body: 'DM Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--ff-body);
-    background: var(--cream);
-    color: var(--ink);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.25rem 5vw;
-    background: rgba(250,247,242,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 0.5px solid var(--border);
-    transition: box-shadow .3s;
-  }
-  nav.scrolled { box-shadow: 0 2px 32px rgba(26,23,20,0.08); }
-
-  .nav-logo {
-    display: flex; flex-direction: column; line-height: 1;
-  }
-  .nav-logo .wordmark {
-    font-family: var(--ff-display);
-    font-size: 1.55rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-  }
-  .nav-logo .tagline-small {
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 400;
-    margin-top: 2px;
-  }
-
-  .nav-links {
-    display: flex; gap: 2.5rem; list-style: none;
-  }
-  .nav-links a {
-    text-decoration: none;
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    transition: color .2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-
-  .nav-cta {
-    padding: 0.55rem 1.5rem;
-    background: var(--gold);
-    color: #fff;
-    border: none;
-    font-family: var(--ff-body);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background .2s, transform .15s;
-  }
-  .nav-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 6vw 4vw 6vw 8vw;
-    position: relative; z-index: 2;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block; width: 2.5rem; height: 0.5px;
-    background: var(--gold);
-  }
-
-  .hero-h1 {
-    font-family: var(--ff-display);
-    font-size: clamp(3rem, 5.5vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 1.75rem;
-  }
-  .hero-h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .hero-desc {
-    color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 380px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-    line-height: 1.75;
-  }
-
-  .hero-actions { display: flex; gap: 1rem; align-items: center; }
-
-  .btn-primary {
-    padding: 0.85rem 2.25rem;
-    background: var(--ink);
-    color: #fff;
-    font-family: var(--ff-body);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: background .2s, transform .15s;
-  }
-  .btn-primary:hover { background: #333; transform: translateY(-2px); }
-
-  .btn-ghost {
-    padding: 0.85rem 2.25rem;
-    background: transparent;
-    color: var(--ink);
-    font-family: var(--ff-body);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 0.5px solid rgba(26,23,20,0.35);
-    cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: border-color .2s, color .2s, transform .15s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-  .hero-right {
-    position: relative;
-    background: var(--sand);
-    overflow: hidden;
-  }
-
-  .hero-right-bg {
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(135deg, rgba(201,168,76,0.12) 0%, transparent 60%),
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A84C' stroke-width='0.3' stroke-opacity='0.2'%3E%3Cpath d='M30 0v60M0 30h60'/%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 60px 60px;
-  }
-
-  .hero-img-wrap {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-
-  /* Decorative landscape SVG sits here — pure CSS art */
-  .hero-illustration {
-    width: 100%; height: 100%;
-    position: absolute; bottom: 0; left: 0;
-  }
-
-  .hero-stats {
-    position: absolute; bottom: 2.5rem; left: 2.5rem;
-    display: flex; gap: 2rem; z-index: 3;
-  }
-  .stat-item { text-align: left; }
-  .stat-num {
-    font-family: var(--ff-display);
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  /* ── TRUST STRIP ── */
-  .trust-strip {
-    background: var(--ink);
-    padding: 1.5rem 8vw;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .trust-strip p {
-    font-size: 0.75rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-  }
-  .trust-badges {
-    display: flex; gap: 2.5rem; align-items: center; flex-wrap: wrap;
-  }
-  .trust-badge {
-    font-size: 0.78rem;
-    color: var(--gold-light);
-    letter-spacing: 0.08em;
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .trust-badge svg { width: 14px; height: 14px; }
-
-  /* ── SECTION BASE ── */
-  section { padding: 7rem 8vw; }
-
-  .section-eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .section-eyebrow::before {
-    content: '';
-    display: block; width: 2rem; height: 0.5px;
-    background: var(--gold);
-  }
-
-  .section-title {
-    font-family: var(--ff-display);
-    font-size: clamp(2rem, 3.5vw, 3.5rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
-  }
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  .section-sub {
-    color: var(--text-muted);
-    max-width: 480px;
-    font-weight: 300;
-    line-height: 1.8;
-  }
-
-  /* ── DESTINATIONS ── */
-  .destinations { background: var(--cream); }
-  .destinations-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; }
-  .destinations-header .right { text-align: right; }
-
-  .dest-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 1.25rem;
-  }
-
-  .dest-card {
-    position: relative; overflow: hidden;
-    cursor: pointer;
-    background: var(--sand);
-  }
-  .dest-card:first-child { grid-row: span 2; }
-
-  .dest-card-img {
-    width: 100%;
-    padding-top: 75%;
-    position: relative;
-    overflow: hidden;
-  }
-  .dest-card:first-child .dest-card-img { padding-top: 130%; }
-
-  .dest-card-fill {
-    position: absolute; inset: 0;
-    transition: transform 0.6s ease;
-  }
-  .dest-card:hover .dest-card-fill { transform: scale(1.06); }
-
-  /* Each card gets a unique color landscape */
-  .fill-rajasthan { background: linear-gradient(180deg, #E8B5A0 0%, #D4845A 40%, #C9A84C 60%, #8A6A1E 100%); }
-  .fill-kerala    { background: linear-gradient(180deg, #6BAED6 0%, #2D7E5A 35%, #1A5C3A 65%, #0D3A22 100%); }
-  .fill-kashmir   { background: linear-gradient(180deg, #BDDAF0 0%, #8CB8D8 30%, #F0EDE8 55%, #E8E4DC 100%); }
-  .fill-dubai     { background: linear-gradient(180deg, #F5D97A 0%, #E8B84B 40%, #C4843A 70%, #8A5A22 100%); }
-  .fill-europe    { background: linear-gradient(180deg, #B8D4F0 0%, #8AB0D4 35%, #5A8AB8 55%, #2D5A80 100%); }
-
-  .dest-card-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(26,23,20,0.72) 0%, transparent 55%);
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 1.5rem;
-    transition: background .3s;
-  }
-  .dest-card:hover .dest-card-overlay { background: linear-gradient(to top, rgba(26,23,20,0.82) 0%, rgba(26,23,20,0.12) 70%); }
-
-  .dest-region {
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 0.3rem;
-  }
-  .dest-name {
-    font-family: var(--ff-display);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #fff;
-    line-height: 1.2;
-  }
-  .dest-card:first-child .dest-name { font-size: 2rem; }
-  .dest-desc {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.65);
-    margin-top: 0.35rem;
-    max-height: 0; overflow: hidden;
-    transition: max-height .4s ease, margin .4s;
-  }
-  .dest-card:hover .dest-desc { max-height: 60px; margin-top: 0.5rem; }
-
-  /* ── WHY US ── */
-  .why-us {
-    background: var(--ink);
-    color: #fff;
-    position: relative; overflow: hidden;
-  }
-  .why-us .section-eyebrow { color: var(--gold); }
-  .why-us .section-eyebrow::before { background: var(--gold); }
-  .why-us .section-title { color: #fff; }
-  .why-us .section-sub { color: rgba(255,255,255,0.55); }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 4rem;
-    margin-top: 3.5rem;
-    position: relative; z-index: 2;
-  }
-
-  .why-bg-pattern {
-    position: absolute; inset: 0;
-    opacity: 0.04;
-    background-image: repeating-linear-gradient(
-      45deg,
-      #C9A84C 0, #C9A84C 1px,
-      transparent 0, transparent 50%
-    );
-    background-size: 40px 40px;
-  }
-
-  .why-item { display: flex; gap: 1.5rem; }
-  .why-icon {
-    width: 2.5rem; height: 2.5rem; flex-shrink: 0;
-    border: 0.5px solid var(--gold);
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 0.15rem;
-  }
-  .why-icon svg { width: 16px; height: 16px; }
-  .why-item h3 {
-    font-family: var(--ff-display);
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .why-item p { color: rgba(255,255,255,0.5); font-size: 0.88rem; font-weight: 300; line-height: 1.75; }
-
-  /* ── FOUNDER ── */
-  .founder { background: var(--mist); }
-  .founder-inner {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .founder-portrait {
-    position: relative;
-  }
-  .founder-portrait-frame {
-    width: 100%;
-    padding-top: 120%;
-    position: relative;
-    background: var(--sand);
-    overflow: hidden;
-  }
-  .founder-portrait-art {
-    position: absolute; inset: 0;
-    background: linear-gradient(160deg, #EDE8DF 0%, #D4C8A8 40%, #C9A84C22 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .founder-monogram {
-    font-family: var(--ff-display);
-    font-size: 6rem;
-    font-weight: 300;
-    color: var(--gold);
-    opacity: 0.6;
-    letter-spacing: -0.02em;
-    font-style: italic;
-  }
-
-  .founder-accent {
-    position: absolute;
-    bottom: -1.5rem; right: -1.5rem;
-    width: 5rem; height: 5rem;
-    background: var(--gold);
-    z-index: -1;
-  }
-  .founder-accent-2 {
-    position: absolute;
-    top: -1.5rem; left: -1.5rem;
-    width: 3rem; height: 3rem;
-    border: 0.5px solid var(--gold);
-    z-index: -1;
-  }
-
-  .founder-quote {
-    font-family: var(--ff-display);
-    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.4;
-    color: var(--ink);
-    margin-bottom: 1.75rem;
-    position: relative;
-    padding-left: 1.5rem;
-    border-left: 2px solid var(--gold);
-  }
-
-  .founder-bio { color: var(--text-muted); font-weight: 300; line-height: 1.8; margin-bottom: 1.5rem; }
-
-  .founder-name {
-    font-family: var(--ff-display);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .founder-title-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 0.2rem;
-  }
-  .founder-credential {
-    margin-top: 0.4rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-
-  /* ── PACKAGES ── */
-  .packages { background: var(--cream); }
-  .pkg-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; }
-
-  .pkg-tabs {
-    display: flex; gap: 0;
-    border: 0.5px solid var(--border);
-    align-self: flex-end;
-  }
-  .pkg-tab {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    font-family: var(--ff-body);
-    transition: background .2s, color .2s;
-  }
-  .pkg-tab.active { background: var(--ink); color: #fff; }
-
-  .pkg-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-
-  .pkg-card {
-    border: 0.5px solid var(--border);
-    background: #fff;
-    padding: 2rem;
-    position: relative;
-    transition: border-color .3s, transform .3s, box-shadow .3s;
-  }
-  .pkg-card:hover {
-    border-color: var(--gold);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(201,168,76,0.12);
-  }
-  .pkg-card.featured {
-    border-color: var(--gold);
-    background: var(--ink);
-    color: #fff;
-  }
-  .pkg-featured-badge {
-    position: absolute; top: -1px; right: 1.5rem;
-    background: var(--gold);
-    color: #fff;
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.75rem;
-  }
-
-  .pkg-duration {
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-  .pkg-card.featured .pkg-duration { color: var(--gold-light); }
-
-  .pkg-name {
-    font-family: var(--ff-display);
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-  .pkg-card.featured .pkg-name { color: #fff; }
-
-  .pkg-region {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-  .pkg-card.featured .pkg-region { color: rgba(255,255,255,0.45); }
-
-  .pkg-divider {
-    height: 0.5px;
-    background: var(--border);
-    margin-bottom: 1.25rem;
-  }
-  .pkg-card.featured .pkg-divider { background: rgba(255,255,255,0.15); }
-
-  .pkg-includes {
-    list-style: none;
-    margin-bottom: 1.75rem;
-  }
-  .pkg-includes li {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    padding: 0.3rem 0;
-    display: flex; align-items: center; gap: 0.6rem;
-  }
-  .pkg-card.featured .pkg-includes li { color: rgba(255,255,255,0.6); }
-  .pkg-includes li::before {
-    content: '';
-    display: inline-block;
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-
-  .pkg-price {
-    display: flex; align-items: baseline; gap: 0.35rem;
-    margin-bottom: 1.25rem;
-  }
-  .pkg-price .currency { font-size: 0.9rem; color: var(--gold); align-self: flex-start; margin-top: 0.3rem; }
-  .pkg-price .amount {
-    font-family: var(--ff-display);
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .pkg-card.featured .pkg-price .amount { color: #fff; }
-  .pkg-price .per { font-size: 0.72rem; color: var(--text-muted); }
-  .pkg-card.featured .pkg-price .per { color: rgba(255,255,255,0.4); }
-
-  .pkg-cta {
-    display: block;
-    padding: 0.8rem;
-    text-align: center;
-    font-family: var(--ff-body);
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    transition: background .2s, transform .15s;
-  }
-  .pkg-card:not(.featured) .pkg-cta {
-    background: var(--ink); color: #fff;
-  }
-  .pkg-card:not(.featured) .pkg-cta:hover { background: var(--gold); }
-  .pkg-card.featured .pkg-cta {
-    background: var(--gold); color: #fff;
-  }
-  .pkg-card.featured .pkg-cta:hover { background: var(--gold-light); color: var(--ink); }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials { background: var(--sand); }
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3.5rem;
-  }
-  .testi-card {
-    background: #fff;
-    padding: 2rem;
-    border: 0.5px solid var(--border);
-    position: relative;
-  }
-  .testi-stars {
-    display: flex; gap: 3px; margin-bottom: 1rem;
-  }
-  .star { color: var(--gold); font-size: 0.75rem; }
-  .testi-text {
-    font-family: var(--ff-display);
-    font-size: 1.05rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink);
-    line-height: 1.65;
-    margin-bottom: 1.5rem;
-  }
-  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
-  .testi-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--sand);
-    border: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--ff-display);
-    font-size: 0.95rem;
-    color: var(--gold-dark);
-    font-weight: 400;
-  }
-  .testi-name { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
-  .testi-meta { font-size: 0.72rem; color: var(--text-muted); }
-
-  /* ── CTA BANNER ── */
-  .cta-banner {
-    background: var(--gold);
-    padding: 5rem 8vw;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 2rem;
-  }
-  .cta-banner .banner-title {
-    font-family: var(--ff-display);
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1.2;
-  }
-  .cta-banner .banner-title em { font-style: italic; }
-  .cta-banner .banner-sub {
-    color: rgba(26,23,20,0.65);
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 300;
-  }
-  .btn-dark {
-    padding: 1rem 2.5rem;
-    background: var(--ink);
-    color: #fff;
-    font-family: var(--ff-body);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    white-space: nowrap;
-    transition: background .2s, transform .15s;
-  }
-  .btn-dark:hover { background: #333; transform: translateY(-2px); }
-
-  /* ── CONTACT ── */
-  .contact { background: var(--cream); }
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  .contact-info-list {
-    list-style: none;
-    margin-top: 2.5rem;
-  }
-  .contact-info-list li {
-    display: flex; gap: 1rem;
-    padding: 1.25rem 0;
-    border-bottom: 0.5px solid var(--border);
-  }
-  .contact-info-list li:last-child { border-bottom: none; }
-  .contact-info-icon {
-    width: 2rem; height: 2rem; flex-shrink: 0;
-    border: 0.5px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    margin-top: 0.1rem;
-  }
-  .contact-info-icon svg { width: 13px; height: 13px; }
-  .contact-info-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.2rem;
-  }
-  .contact-info-val { color: var(--ink); font-size: 0.88rem; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
-  .form-field label {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-  .form-field input, .form-field select, .form-field textarea {
-    padding: 0.75rem 1rem;
-    background: #fff;
-    border: 0.5px solid rgba(26,23,20,0.2);
-    font-family: var(--ff-body);
-    font-size: 0.88rem;
-    color: var(--ink);
-    outline: none;
-    transition: border-color .2s;
-    resize: none;
-  }
-  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
-    border-color: var(--gold);
-  }
-  .form-field select { appearance: none; cursor: pointer; }
-  .form-submit {
-    padding: 0.95rem 2rem;
-    background: var(--gold);
-    color: #fff;
-    border: none;
-    font-family: var(--ff-body);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    align-self: flex-start;
-    transition: background .2s, transform .15s;
-  }
-  .form-submit:hover { background: var(--gold-dark); transform: translateY(-2px); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.55);
-    padding: 4rem 8vw 2rem;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-  .footer-brand .wordmark {
-    font-family: var(--ff-display);
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.2rem;
-  }
-  .footer-brand .tagline-small {
-    font-size: 0.65rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-  }
-  .footer-brand p { font-size: 0.82rem; line-height: 1.75; font-weight: 300; max-width: 220px; }
-
-  footer h4 {
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 1.25rem;
-  }
-  footer ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
-  footer ul li a {
-    color: rgba(255,255,255,0.55);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 300;
-    transition: color .2s;
-  }
-  footer ul li a:hover { color: var(--gold); }
-
-  .footer-bottom {
-    border-top: 0.5px solid rgba(255,255,255,0.08);
-    padding-top: 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-bottom p { font-size: 0.72rem; }
-  .footer-legal {
-    display: flex; gap: 1.5rem;
-  }
-  .footer-legal a { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-decoration: none; }
-  .footer-legal a:hover { color: var(--gold); }
-
-  /* ── DECORATIVE ── */
-  .gold-line {
-    width: 3rem; height: 1px;
-    background: linear-gradient(to right, var(--gold), transparent);
-    margin: 1.5rem 0;
-  }
-
-  /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-left { padding: 6rem 6vw 3rem; }
-    .hero-right { height: 55vw; }
-    .dest-grid { grid-template-columns: 1fr 1fr; }
-    .dest-card:first-child { grid-column: span 2; grid-row: span 1; }
-    .why-grid { grid-template-columns: 1fr; }
-    .founder-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .pkg-grid { grid-template-columns: 1fr; }
-    .testi-grid { grid-template-columns: 1fr; }
-    .contact-inner { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .nav-links { display: none; }
-  }
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#F5F1E8;
+  color:#0F2A44;
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  max-width:600px;
+  margin:auto;
+  color:#555;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 25px;
+  margin:15px 10px;
+  text-decoration:none;
+  border-radius:5px;
+  font-size:14px;
+}
+
+.btn-primary{
+  background:#F59E0B;
+  color:#fff;
+}
+
+.btn-secondary{
+  border:1px solid #0F2A44;
+  color:#0F2A44;
+}
+
+/* SECTION */
+.section{
+  text-align:center;
+  padding:60px 20px;
+}
+
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+
+.card{
+  background:#fff;
+  padding:20px;
+  width:300px;
+  border-radius:10px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* CONTACT */
+.contact{
+  background:#fff;
+  padding:40px;
+  border-radius:10px;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:1px solid #ddd;
+  border-radius:5px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:14px;
+  color:#777;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-size:14px;
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">
-    <span class="wordmark">Desh Videsh Travels</span>
-    <span class="tagline-small">Journey Beyond Horizons</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#destinations">Destinations</a></li>
-    <li><a href="#packages">Packages</a></li>
-    <li><a href="#founder">Our Story</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Plan My Trip</a>
-</nav>
-
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Curated Journeys Since 2024</div>
-    <h1 class="hero-h1">
-      The world,<br>
-      <em>crafted</em><br>
-      for you.
-    </h1>
-    <p class="hero-desc">
-      From the golden deserts of Rajasthan to the spires of Europe — Desh Videsh Travels turns your dreams into meticulously curated experiences.
-    </p>
-    <div class="hero-actions">
-      <a href="#packages" class="btn-primary">Explore Packages</a>
-      <a href="#contact" class="btn-ghost">Speak to Us</a>
+<section class="hero">
+  <h1>Travel the world without overpaying</h1>
+  <p>Premium travel experiences, thoughtfully planned to give you the best value — from local escapes to international adventures.</p>
+
+  <a href="#contact" class="btn btn-primary">Plan Your Trip</a>
+  <a href="https://wa.me/919876543210" class="btn btn-secondary">Chat on WhatsApp</a>
+</section>
+
+<!-- SERVICES -->
+<section class="section">
+  <h2>Our Services</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Domestic Trips</h3>
+      <p>Explore India with curated experiences.</p>
     </div>
-  </div>
 
-  <div class="hero-right">
-    <div class="hero-right-bg"></div>
-    <!-- Decorative SVG landscape -->
-    <svg class="hero-illustration" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
-      <!-- Sky gradient layers -->
-      <defs>
-        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#BDDAF5"/>
-          <stop offset="100%" stop-color="#F5ECD0"/>
-        </linearGradient>
-        <linearGradient id="earthGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#C9A84C"/>
-          <stop offset="100%" stop-color="#8A6A1E"/>
-        </linearGradient>
-      </defs>
+    <div class="card">
+      <h3>International Tours</h3>
+      <p>Travel globally with ease and comfort.</p>
+    </div>
 
-      <!-- Sky -->
-      <rect width="600" height="700" fill="url(#skyGrad)"/>
-
-      <!-- Sun -->
-      <circle cx="440" cy="200" r="55" fill="#F5D97A" opacity="0.45"/>
-      <circle cx="440" cy="200" r="38" fill="#EFBE40" opacity="0.55"/>
-
-      <!-- Far mountains -->
-      <polygon points="0,380 80,240 160,310 240,220 320,290 400,200 480,270 560,230 600,260 600,420 0,420" fill="#D4C8A8" opacity="0.5"/>
-      <!-- Closer mountains -->
-      <polygon points="0,440 100,300 200,360 300,280 400,340 500,280 600,320 600,480 0,480" fill="#C9B878" opacity="0.6"/>
-
-      <!-- Ground -->
-      <rect y="450" width="600" height="250" fill="url(#earthGrad)" opacity="0.85"/>
-
-      <!-- Sand ripples -->
-      <ellipse cx="120" cy="480" rx="80" ry="8" fill="#8A6A1E" opacity="0.2"/>
-      <ellipse cx="350" cy="500" rx="100" ry="7" fill="#8A6A1E" opacity="0.15"/>
-      <ellipse cx="500" cy="475" rx="60" ry="6" fill="#8A6A1E" opacity="0.18"/>
-
-      <!-- Silhouette palace / monument -->
-      <!-- Main dome -->
-      <ellipse cx="300" cy="358" rx="42" ry="22" fill="#1A1714" opacity="0.85"/>
-      <rect x="268" y="358" width="64" height="60" fill="#1A1714" opacity="0.85"/>
-      <!-- Minarets -->
-      <rect x="235" y="340" width="14" height="78" fill="#1A1714" opacity="0.85"/>
-      <ellipse cx="242" cy="336" rx="10" ry="14" fill="#1A1714" opacity="0.85"/>
-      <rect x="351" y="340" width="14" height="78" fill="#1A1714" opacity="0.85"/>
-      <ellipse cx="358" cy="336" rx="10" ry="14" fill="#1A1714" opacity="0.85"/>
-      <!-- Arch -->
-      <rect x="278" y="388" width="44" height="30" fill="#C9A84C" opacity="0.3"/>
-      <!-- Base -->
-      <rect x="220" y="418" width="160" height="32" fill="#1A1714" opacity="0.85"/>
-
-      <!-- Palm trees left -->
-      <rect x="60" y="410" width="6" height="60" fill="#1A1714" opacity="0.7"/>
-      <ellipse cx="63" cy="405" rx="22" ry="14" fill="#1A5C3A" opacity="0.75"/>
-      <ellipse cx="48" cy="415" rx="18" ry="10" fill="#1A5C3A" opacity="0.6"/>
-      <ellipse cx="78" cy="412" rx="20" ry="10" fill="#1A5C3A" opacity="0.65"/>
-
-      <!-- Palm trees right -->
-      <rect x="520" y="405" width="6" height="65" fill="#1A1714" opacity="0.7"/>
-      <ellipse cx="523" cy="400" rx="22" ry="14" fill="#1A5C3A" opacity="0.75"/>
-      <ellipse cx="508" cy="408" rx="18" ry="10" fill="#1A5C3A" opacity="0.6"/>
-      <ellipse cx="538" cy="406" rx="20" ry="10" fill="#1A5C3A" opacity="0.65"/>
-
-      <!-- Foreground shadow -->
-      <rect y="580" width="600" height="120" fill="#8A6A1E" opacity="0.5"/>
-
-      <!-- Gold decorative frame lines -->
-      <rect x="24" y="24" width="552" height="652" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
-      <rect x="36" y="36" width="528" height="628" fill="none" stroke="#C9A84C" stroke-width="0.3" opacity="0.2"/>
-    </svg>
-
-    <!-- Floating stats -->
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">2,400+</div>
-        <div class="stat-label">Happy Travellers</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">38</div>
-        <div class="stat-label">Countries Covered</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Bespoke Itineraries</div>
-      </div>
+    <div class="card">
+      <h3>Honeymoon Packages</h3>
+      <p>Special moments crafted perfectly.</p>
     </div>
   </div>
 </section>
-
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <p>Trusted by travellers across India</p>
-  <div class="trust-badges">
-    <div class="trust-badge">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1L2 5.3l4.2-.7z"/>
-      </svg>
-      IATA Affiliated
-    </div>
-    <div class="trust-badge">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M8 1v14M1 8h14"/>
-        <circle cx="8" cy="8" r="6"/>
-      </svg>
-      Ministry of Tourism Registered
-    </div>
-    <div class="trust-badge">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M3 8l3.5 3.5 7-7"/>
-      </svg>
-      Visa Assistance Included
-    </div>
-    <div class="trust-badge">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M8 1a5 5 0 100 10A5 5 0 008 1zM8 15v-4"/>
-        <path d="M6 13h4"/>
-      </svg>
-      24/7 Travel Support
-    </div>
-  </div>
-</div>
-
-<!-- DESTINATIONS -->
-<section class="destinations" id="destinations">
-  <div class="destinations-header">
-    <div>
-      <div class="section-eyebrow">Where will you go</div>
-      <h2 class="section-title">Destinations we <em>love</em></h2>
-      <p class="section-sub">From India's royal heartlands to the world's most coveted corners — we know every road, every hidden turn.</p>
-    </div>
-    <div class="right">
-      <a href="#packages" class="btn-ghost" style="font-size:0.72rem">View All Destinations &rarr;</a>
-    </div>
-  </div>
-
-  <div class="dest-grid reveal">
-    <div class="dest-card">
-      <div class="dest-card-img">
-        <div class="dest-card-fill fill-rajasthan"></div>
-        <div class="dest-card-overlay">
-          <div class="dest-region">North India</div>
-          <div class="dest-name">Rajasthan</div>
-          <div class="dest-desc">Palaces, forts & the infinite Thar Desert — India's royal heartland awaits.</div>
-        </div>
-      </div>
-    </div>
-    <div class="dest-card">
-      <div class="dest-card-img">
-        <div class="dest-card-fill fill-kerala"></div>
-        <div class="dest-card-overlay">
-          <div class="dest-region">South India</div>
-          <div class="dest-name">Kerala</div>
-          <div class="dest-desc">Backwaters, spice gardens & pristine shores.</div>
-        </div>
-      </div>
-    </div>
-    <div class="dest-card">
-      <div class="dest-card-img">
-        <div class="dest-card-fill fill-kashmir"></div>
-        <div class="dest-card-overlay">
-          <div class="dest-region">North India</div>
-          <div class="dest-name">Kashmir</div>
-          <div class="dest-desc">Heaven on Earth, in every season.</div>
-        </div>
-      </div>
-    </div>
-    <div class="dest-card">
-      <div class="dest-card-img">
-        <div class="dest-card-fill fill-dubai"></div>
-        <div class="dest-card-overlay">
-          <div class="dest-region">Middle East</div>
-          <div class="dest-name">Dubai</div>
-          <div class="dest-desc">Opulence, culture & desert adventures.</div>
-        </div>
-      </div>
-    </div>
-    <div class="dest-card">
-      <div class="dest-card-img">
-        <div class="dest-card-fill fill-europe"></div>
-        <div class="dest-card-overlay">
-          <div class="dest-region">International</div>
-          <div class="dest-name">Europe</div>
-          <div class="dest-desc">Paris to Prague — handcrafted European escapes.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY US -->
-<section class="why-us">
-  <div class="why-bg-pattern"></div>
-  <div class="section-eyebrow" style="position:relative;z-index:2;">Why travel with us</div>
-  <h2 class="section-title" style="position:relative;z-index:2;max-width:520px;">Journeys built on <em>trust,</em> experience & care</h2>
-  <p class="section-sub" style="position:relative;z-index:2;">We don't sell holidays. We craft memories — tailored to your pace, taste, and budget, with the backing of decades of expertise.</p>
-  <div class="why-grid reveal">
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.2l-3.7 2.1.7-4.1L2 5.3l4.2-.7z"/>
-        </svg>
-      </div>
-      <div>
-        <h3>Founder-Led Excellence</h3>
-        <p>Founded by Mr. Sanjeev Bhati — ex-founder of Sahara Education — every journey carries the same leadership commitment he's famous for.</p>
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/>
-        </svg>
-      </div>
-      <div>
-        <h3>24/7 On-Trip Support</h3>
-        <p>Your dedicated travel manager is just one call away — whether you're in Jaipur or Zurich, someone always has your back.</p>
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <path d="M2 4h12v9a1 1 0 01-1 1H3a1 1 0 01-1-1V4zM5 4V3a1 1 0 011-1h4a1 1 0 011 1v1"/>
-        </svg>
-      </div>
-      <div>
-        <h3>Truly Bespoke Itineraries</h3>
-        <p>No cookie-cutter packages. Every trip is designed around you — your interests, your budget, your dream.</p>
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <path d="M1 8s2-5 7-5 7 5 7 5-2 5-7 5-7-5-7-5z"/>
-          <circle cx="8" cy="8" r="2"/>
-        </svg>
-      </div>
-      <div>
-        <h3>Transparent Pricing</h3>
-        <p>Everything is itemised. No hidden fees, no surprise charges. What you see is exactly what you pay.</p>
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <path d="M3 8l3.5 3.5 7-7"/>
-        </svg>
-      </div>
-      <div>
-        <h3>Visa & Documentation Help</h3>
-        <p>Our team handles visa applications, travel insurance coordination, and all paperwork — so you just pack and go.</p>
-      </div>
-    </div>
-    <div class="why-item">
-      <div class="why-icon">
-        <svg viewBox="0 0 16 16" fill="none" stroke="#C9A84C" stroke-width="1.4">
-          <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/>
-        </svg>
-      </div>
-      <div>
-        <h3>Local Expertise, Globally</h3>
-        <p>Handpicked local partners in every destination ensure authentic, insider experiences you won't find on any app.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER -->
-<section class="founder" id="founder">
-  <div class="founder-inner">
-    <div class="founder-portrait reveal">
-      <div class="founder-portrait-frame">
-        <div class="founder-portrait-art">
-          <div class="founder-monogram">SB</div>
-        </div>
-      </div>
-      <div class="founder-accent"></div>
-      <div class="founder-accent-2"></div>
-    </div>
-    <div class="reveal">
-      <div class="section-eyebrow">Our Story</div>
-      <blockquote class="founder-quote">
-        "Travel is not just movement — it is transformation. Every journey should leave you a little more alive."
-      </blockquote>
-      <p class="founder-bio">
-        Desh Videsh Travels was born from a lifetime of leadership and a love for the world's wonders. Mr. Sanjeev Bhati, having shaped thousands of young lives as the founder of Sahara Education, turned his attention to a new canvas — the open road, the open sea, and the open sky.
-      </p>
-      <p class="founder-bio">
-        His vision was simple: to bring the same standard of care, trust, and excellence he built in education into the world of travel. Every itinerary we craft carries that legacy — meticulous, personal, and deeply human.
-      </p>
-      <div class="gold-line"></div>
-      <div class="founder-name">Mr. Sanjeev Bhati</div>
-      <div class="founder-title-label">Founder & Managing Director</div>
-      <div class="founder-credential">Ex-Founder, Sahara Education | Visionary Educator turned Travel Curator</div>
-    </div>
-  </div>
-</section>
-
-<!-- PACKAGES -->
-<section class="packages" id="packages">
-  <div class="pkg-header">
-    <div>
-      <div class="section-eyebrow">Curated Packages</div>
-      <h2 class="section-title">Choose your <em>escape</em></h2>
-      <p class="section-sub">Hand-crafted journeys for every kind of traveller — from solo explorers to large family groups.</p>
-    </div>
-    <div class="pkg-tabs">
-      <button class="pkg-tab active" onclick="filterPkg(this,'domestic')">Domestic</button>
-      <button class="pkg-tab" onclick="filterPkg(this,'international')">International</button>
-      <button class="pkg-tab" onclick="filterPkg(this,'honeymoon')">Honeymoon</button>
-    </div>
-  </div>
-
-  <div class="pkg-grid reveal">
-    <div class="pkg-card" data-cat="domestic">
-      <div class="pkg-duration">5 Nights / 6 Days</div>
-      <div class="pkg-name">Royal Rajasthan</div>
-      <div class="pkg-region">Jaipur · Jodhpur · Udaipur</div>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-includes">
-        <li>Luxury heritage hotel stays</li>
-        <li>Private AC vehicle throughout</li>
-        <li>Expert local guide at each city</li>
-        <li>Daily breakfast & select dinners</li>
-        <li>All monument entry fees</li>
-      </ul>
-      <div class="pkg-price">
-        <span class="currency">₹</span>
-        <span class="amount">42,999</span>
-        <span class="per">/ per person</span>
-      </div>
-      <a href="#contact" class="pkg-cta">Enquire Now</a>
-    </div>
-
-    <div class="pkg-card featured" data-cat="international">
-      <div class="pkg-featured-badge">Most Popular</div>
-      <div class="pkg-duration">6 Nights / 7 Days</div>
-      <div class="pkg-name">Dubai Discovery</div>
-      <div class="pkg-region">Dubai · Abu Dhabi</div>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-includes">
-        <li>5-star hotel accommodation</li>
-        <li>Return airfare (economy)</li>
-        <li>Desert safari experience</li>
-        <li>Burj Khalifa At-The-Top tickets</li>
-        <li>City tour & dhow cruise</li>
-        <li>Visa processing assistance</li>
-      </ul>
-      <div class="pkg-price">
-        <span class="currency">₹</span>
-        <span class="amount">89,999</span>
-        <span class="per">/ per person</span>
-      </div>
-      <a href="#contact" class="pkg-cta">Enquire Now</a>
-    </div>
-
-    <div class="pkg-card" data-cat="honeymoon">
-      <div class="pkg-duration">7 Nights / 8 Days</div>
-      <div class="pkg-name">Kerala Serenity</div>
-      <div class="pkg-region">Munnar · Thekkady · Alleppey</div>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-includes">
-        <li>Houseboat stay on backwaters</li>
-        <li>Ayurvedic spa sessions</li>
-        <li>Plantation & wildlife tour</li>
-        <li>All meals on houseboat</li>
-        <li>Honeymoon room décor</li>
-      </ul>
-      <div class="pkg-price">
-        <span class="currency">₹</span>
-        <span class="amount">58,500</span>
-        <span class="per">/ per couple</span>
-      </div>
-      <a href="#contact" class="pkg-cta">Enquire Now</a>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="section-eyebrow">What travellers say</div>
-  <h2 class="section-title">Stories from the <em>road</em></h2>
-  <div class="testi-grid reveal">
-    <div class="testi-card">
-      <div class="testi-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testi-text">"Desh Videsh planned our Rajasthan trip flawlessly. Every hotel was a surprise, every guide was passionate. We didn't have to think about a single logistics detail."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">RK</div>
-        <div>
-          <div class="testi-name">Radhika & Karan Mehta</div>
-          <div class="testi-meta">Mumbai · Rajasthan Family Tour</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testi-text">"Our Dubai honeymoon was beyond anything we imagined. The team sorted everything — visa, flights, the desert safari. Sanjeev ji's attention to detail is extraordinary."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">AS</div>
-        <div>
-          <div class="testi-name">Ananya & Shivam Gupta</div>
-          <div class="testi-meta">Delhi · Dubai Honeymoon Package</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-      </div>
-      <p class="testi-text">"Booked a group tour to Europe for 22 people. The coordination, the hotels, the coach — everything was seamless. Will only travel with Desh Videsh from now on."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">PJ</div>
-        <div>
-          <div class="testi-name">Prakash Joshi & Group</div>
-          <div class="testi-meta">Ahmedabad · European Group Tour</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<div class="cta-banner">
-  <div>
-    <div class="banner-title">Your <em>dream journey</em><br>starts with one conversation.</div>
-    <div class="banner-sub">No obligation. No pressure. Just your story and where you want to take it.</div>
-  </div>
-  <a href="#contact" class="btn-dark">Start Planning Today</a>
-</div>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div>
-      <div class="section-eyebrow">Get in Touch</div>
-      <h2 class="section-title">Let's plan your <em>journey</em></h2>
-      <p class="section-sub">Whether you know exactly where you want to go or need inspiration — our team is here to help.</p>
+<section class="section" id="contact">
+  <h2>Plan Your Trip</h2>
 
-      <ul class="contact-info-list reveal">
-        <li>
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Office</div>
-            <div class="contact-info-val">Desh Videsh Travels, India</div>
-          </div>
-        </li>
-        <li>
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M2 3h12v10H2z"/><path d="M2 3l6 5 6-5"/>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-val">hello@deshvidesh.com</div>
-          </div>
-        </li>
-        <li>
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <path d="M3 2h3l1.5 3.5-2 1.2a9 9 0 004.8 4.8l1.2-2L15 11v3a1 1 0 01-1 1C5 15 1 11 1 3a1 1 0 011-1z"/>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Phone</div>
-            <div class="contact-info-val">+91 98765 43210</div>
-          </div>
-        </li>
-        <li>
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-              <circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/>
-            </svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Hours</div>
-            <div class="contact-info-val">Mon – Sat: 9:00 AM – 7:00 PM</div>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <div class="container contact">
 
-    <div class="reveal">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <div class="form-field">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" placeholder="Aarav" />
-          </div>
-          <div class="form-field">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" placeholder="Sharma" />
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="you@email.com" />
-        </div>
-        <div class="form-field">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" placeholder="+91 00000 00000" />
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="dest">Destination Interest</label>
-            <select id="dest">
-              <option value="">Select destination</option>
-              <option>Rajasthan</option>
-              <option>Kerala</option>
-              <option>Kashmir</option>
-              <option>Dubai / UAE</option>
-              <option>Europe</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="pax">No. of Travellers</label>
-            <select id="pax">
-              <option value="">Select</option>
-              <option>1 – 2</option>
-              <option>3 – 5</option>
-              <option>6 – 10</option>
-              <option>10+</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="msg">Tell us about your dream trip</label>
-          <textarea id="msg" rows="4" placeholder="Budget, dates, special requests..."></textarea>
-        </div>
-        <button type="submit" class="form-submit" id="submitBtn">Send Enquiry &rarr;</button>
-      </form>
-    </div>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Phone Number">
+      <textarea name="message" placeholder="Tell us about your trip"></textarea>
+
+      <button class="btn btn-primary" type="submit">Send Enquiry</button>
+    </form>
+
+    <p>Email: info@deshvideshtours.com</p>
+    <p>Phone: +91 98765 43210</p>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="wordmark">Desh Videsh Travels</div>
-      <div class="tagline-small">Journey Beyond Horizons</div>
-      <p>Crafting unforgettable journeys across India and the world, guided by trust, expertise, and a genuine love for travel.</p>
-    </div>
-    <div>
-      <h4>Destinations</h4>
-      <ul>
-        <li><a href="#destinations">Rajasthan</a></li>
-        <li><a href="#destinations">Kerala</a></li>
-        <li><a href="#destinations">Kashmir</a></li>
-        <li><a href="#destinations">Dubai</a></li>
-        <li><a href="#destinations">Europe</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Company</h4>
-      <ul>
-        <li><a href="#founder">Our Story</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Group Travel</a></li>
-        <li><a href="#">Honeymoon Specials</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">Visa Guidance</a></li>
-        <li><a href="#">Travel Insurance</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#">Cancellation Policy</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024 Desh Videsh Travels. Founded by Sanjeev Bhati. All rights reserved.</p>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-  </div>
+  © 2026 Desh Videsh Tours & Travels
 </footer>
 
-<script>
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/919876543210" class="whatsapp">WhatsApp</a>
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
-
-  // Package tab filter
-  function filterPkg(btn, cat) {
-    document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.pkg-card').forEach(card => {
-      const cardCat = card.dataset.cat;
-      const show = cardCat === cat || cat === 'all';
-      card.style.display = show ? 'block' : 'none';
-    });
-  }
-
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Enquiry Sent! We\'ll be in touch.';
-    btn.style.background = '#2D7E5A';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Send Enquiry →';
-      btn.style.background = '';
-      btn.disabled = false;
-    }, 4000);
-  }
-</script>
 </body>
 </html>
