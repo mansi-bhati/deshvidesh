@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,10 +110,10 @@ section{padding:6rem 6vw;}
 .dest-card:hover .dest-tagline{opacity:1;transform:none;}
 
 /* WHY */
-.why{background:var(--blue-deep);position:relative;overflow:hidden;width:100%;box-sizing:border-box;}
+.why{background:var(--blue-deep);position:relative;overflow:hidden;}
 .why-pat{position:absolute;inset:0;opacity:0.03;background-image:repeating-linear-gradient(0deg,#C9A84C 0,#C9A84C 1px,transparent 0,transparent 56px),repeating-linear-gradient(90deg,#C9A84C 0,#C9A84C 1px,transparent 0,transparent 56px);}
 .why-inner{position:relative;z-index:2;}
-.why-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:2rem;width:100%;}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem;}
 .why-card{padding:2rem 1.75rem;border:1px solid rgba(201,168,76,0.1);background:rgba(255,255,255,0.02);transition:border-color .3s,background .3s,transform .3s;position:relative;overflow:hidden;}
 .why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
 .why-card:hover::before{transform:scaleX(1);}
@@ -444,10 +445,9 @@ footer ul li a:hover{color:var(--gold);}
 </section>
 
 <!-- WHY -->
-<section class="why" id="why">
+<section class="why" id="why" style="padding-left:6vw;padding-right:6vw;width:100%;box-sizing:border-box;">
   <div class="why-pat"></div>
-  <div style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
-    <div>
+<div style="position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;width:100%;max-width:100%;">    <div>
       <div class="s-eye" style="color:var(--gold);">Why travel with us</div>
       <h2 class="s-title" style="color:var(--white);">Journeys built on <em>trust,</em><br>experience & care</h2>
       <p class="s-sub" style="color:rgba(255,255,255,0.42);margin-bottom:2rem;">We don't sell holidays. We craft memories — tailored to your pace, taste, and budget.</p>
